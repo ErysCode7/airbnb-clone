@@ -1,3 +1,4 @@
+import { Header } from "@/globals/components/header";
 import Head from "next/head";
 import { ReactNode } from "react";
 
@@ -37,8 +38,8 @@ const Layout = ({ children }: Props) => {
         <meta property="og:description" content="Airbnb clone Website" />
       </Head>
       <>
-        {/* HEADER OR NAVBAR */}
-        {/* <Navbar /> */}
+        {/* HEADER */}
+        <Header />
 
         {/* MAIN PAGE */}
         <main>{children}</main>
