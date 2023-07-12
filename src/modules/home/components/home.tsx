@@ -1,3 +1,4 @@
+import { LargeCard } from "@/globals/components/card/large-card";
 import { CardsData, ExploreData } from "@/globals/types/types";
 import Banner from "./banner";
 import Explore from "./explore-section";
@@ -17,8 +18,12 @@ const Home = ({ exploreData, cardsData }: Props) => {
       <div className="max-w-7xl mx-auto px-8 sm:px-16">
         {/*  EXPLORE */}
         <Explore exploreData={exploreData} />
+
         {/*  LIVE */}
         <Live cardsData={cardsData} />
+
+        {/*  Large Card */}
+        <LargeCard />
       </div>
     </div>
   );
