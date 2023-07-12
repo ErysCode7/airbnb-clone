@@ -1,12 +1,22 @@
+import { ExploreData } from "@/globals/types/types";
 import Banner from "./banner";
+import Explore from "./explore";
 
+type Props = {
+  exploreData: ExploreData[];
+};
 
-type Props = {};
+const Home = ({ exploreData }: Props) => {
+  return (
+    <div>
+      {/* BANNER HERO */}
+      <Banner />
 
-const Home = (props: Props) => {
-  return <div>
-    <Banner />
-  </div>;
+      <div className="max-w-7xl mx-auto px-8 sm:px-16">
+        <Explore exploreData={exploreData} />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
