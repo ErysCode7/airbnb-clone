@@ -1,6 +1,7 @@
 import { Header } from "@/globals/components/header";
 import Head from "next/head";
 import { ReactNode } from "react";
+import { Footer } from "../footer";
 
 type Props = {
   children: ReactNode;
@@ -45,7 +46,7 @@ const Layout = ({ children }: Props) => {
         <main>{children}</main>
 
         {/* FOOTER */}
-        {/* <Footer /> */}
+        <Footer />
       </>
     </>
   );
