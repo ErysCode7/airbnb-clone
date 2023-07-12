@@ -1,15 +1,16 @@
-import { ExploreData } from "@/globals/types/types";
+import { CardsData, ExploreData } from "@/globals/types/types";
 import { Home } from "@/modules/home";
 import type { GetStaticProps, NextPage } from "next";
 
 type Props = {
   exploreData: ExploreData[];
+  cardsData: CardsData[];
 };
 
-const HomePage: NextPage<Props> = ({ exploreData }) => {
+const HomePage: NextPage<Props> = ({ exploreData, cardsData }) => {
   return (
     <>
-      <Home exploreData={exploreData} />
+      <Home exploreData={exploreData} cardsData={cardsData} />
     </>
   );
 };
@@ -17,12 +18,19 @@ const HomePage: NextPage<Props> = ({ exploreData }) => {
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("https://www.jsonkeeper.com/b/4G1G");
-  const data = await response.json();
+  const [exploreData, cardsData] = await Promise.all([
+    fetch("https://www.jsonkeeper.com/b/4G1G").then((response) =>
+      response.json()
+    ),
+    fetch("https://www.jsonkeeper.com/b/VHHT").then((response) =>
+      response.json()
+    ),
+  ]);
 
   return {
     props: {
-      exploreData: data,
+      exploreData,
+      cardsData,
     },
   };
 };
