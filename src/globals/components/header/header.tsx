@@ -3,6 +3,7 @@ import {
   MenuIcon,
   SearchIcon,
   UserCircleIcon,
+  UsersIcon,
 } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useState } from "react";
@@ -26,6 +27,7 @@ const Header = (props: Props) => {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(dateToday);
   const [endDate, setEndDate] = useState(dateToday);
+  const [noOfGuests, setNoOfGuests] = useState<number>(1);
 
   const selectionRange = {
     startDate,
@@ -36,6 +38,10 @@ const Header = (props: Props) => {
   const handleSelect = (ranges: SelectionRange | any) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
+  };
+
+  const resetInput = () => {
+    setSearchInput("");
   };
 
   return (
@@ -78,13 +84,36 @@ const Header = (props: Props) => {
       </div>
 
       {searchInput && (
-        <div>
+        <div className="flex flex-col col-span-3 mx-auto my-1">
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={dateToday}
             rangeColors={["#FD5B61"]}
             onChange={handleSelect}
           />
+          <div className="flex items-center border-b mb-4">
+            <h2 className="text-2xl flex-grow font-semibold">
+              Number of Guests
+            </h2>
+
+            <UsersIcon className="h-5" />
+            <input
+              className="w-12 pl-2 text-lg outline-none text-red-400"
+              type="number"
+              name="no-of-guest"
+              id="no-of-guest"
+              min={1}
+              value={noOfGuests}
+              onChange={(e) => setNoOfGuests(parseInt(e.target.value))}
+            />
+          </div>
+
+          <div className="flex">
+            <button onClick={resetInput} className="flex-grow text-gray-500">
+              Cancel
+            </button>
+            <button className="flex-grow text-red-500">Search</button>
+          </div>
         </div>
       )}
     </header>
