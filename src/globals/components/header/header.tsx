@@ -6,6 +6,7 @@ import {
   UsersIcon,
 } from "@heroicons/react/solid";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 
@@ -22,6 +23,8 @@ type SelectionRange = {
 };
 
 const Header = (props: Props) => {
+  const router = useRouter();
+
   const dateToday = new Date();
 
   const [searchInput, setSearchInput] = useState("");
@@ -47,7 +50,10 @@ const Header = (props: Props) => {
   return (
     <header className="sticky top-0 bg-white z-50 grid grid-cols-3 shadow-md p-5 md:px-10">
       {/* LOGO */}
-      <div className="relative h-10 lg:cursor-pointer">
+      <div
+        onClick={() => router.push("/")}
+        className="relative h-10 lg:cursor-pointer"
+      >
         <Image
           src={"https://links.papareact.com/qd3"}
           alt={"logo"}
