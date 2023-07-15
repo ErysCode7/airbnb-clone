@@ -1,5 +1,6 @@
 import { formatDate } from "@/globals/utils/helper";
 import { useRouter } from "next/router";
+import { FILTER_OPTIONS } from "../constants";
 
 type Props = {};
 
@@ -25,11 +26,11 @@ const Search = (props: Props) => {
         </h1>
 
         <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
-          <p className="button">Cancellation Flexibility</p>
-          <p className="button">Type of Place</p>
-          <p className="button">Price</p>
-          <p className="button">Rooms and Beds</p>
-          <p className="button">More filters</p>
+          {FILTER_OPTIONS.map((option) => (
+            <button key={option.id} type="button" className="button">
+              {option.text}
+            </button>
+          ))}
         </div>
       </div>
     </section>
