@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { formatDate } from "@/globals/utils/helper";
 import { useRouter } from "next/router";
 
 type Props = {};
@@ -8,12 +8,8 @@ const Search = (props: Props) => {
 
   const { location = "", startDate, endDate, noOfGuests = "" } = router.query;
 
-  const formattedStartDate = format(
-    new Date(startDate as string),
-    "dd MMMM yy"
-  );
-
-  const formattedEndDate = format(new Date(endDate as string), "dd MMMM yy");
+  const formattedStartDate = formatDate(startDate as string);
+  const formattedEndDate = formatDate(endDate as string);
 
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
