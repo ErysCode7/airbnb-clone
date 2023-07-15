@@ -6,17 +6,17 @@ type Props = {
   searchResults: SearchPageData[];
 };
 
-const SearchPage: NextPage<Props> = () => {
+const SearchPage: NextPage<Props> = ({ searchResults }) => {
   return (
     <>
-      <Search />
+      <Search searchResults={searchResults} />
     </>
   );
 };
 
 export default SearchPage;
 
-export const getServerSiderProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(`https://www.jsonkeeper.com/b/5NPS`);
   const data = await response.json();
 
