@@ -12,3 +12,5 @@ const SearchPage: NextPage<Props> = () => {
 };
 
 export default SearchPage;
+
+

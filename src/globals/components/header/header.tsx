@@ -47,6 +47,20 @@ const Header = (props: Props) => {
     setSearchInput("");
   };
 
+  const handleSearch = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuests,
+      },
+    });
+
+    setSearchInput("");
+  };
+
   return (
     <header className="sticky top-0 bg-white z-50 grid grid-cols-3 shadow-md p-5 md:px-10">
       {/* LOGO */}
@@ -118,7 +132,9 @@ const Header = (props: Props) => {
             <button onClick={resetInput} className="flex-grow text-gray-500">
               Cancel
             </button>
-            <button className="flex-grow text-red-500">Search</button>
+            <button onClick={handleSearch} className="flex-grow text-red-500">
+              Search
+            </button>
           </div>
         </div>
       )}
