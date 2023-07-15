@@ -59,7 +59,7 @@ const Header = (props: Props) => {
       },
     });
 
-    // setSearchInput("");
+    setSearchInput("");
   };
 
   return (
